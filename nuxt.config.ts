@@ -1,19 +1,30 @@
+import { defineNuxtConfig } from "nuxt/config";
+
 export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: [
     '@nuxt/image',
     '@nuxtjs/tailwindcss',
-    'shadcn-nuxt'
-  ]
+    'shadcn-nuxt',
+    [
+    '@nuxtjs/google-fonts', 
+    {
+      families: {
+        Lato: {
+          wght: [300, 400, 700],
+          ital: [300]
+        }
+      }
+    } 
+    ],
+    'nuxt-icon',
+    '@pinia/nuxt',
+  ],
   shadcn: {
-    /**
-     * Prefix for all the imported component
-     */
-    prefix: '',
-    /**
-     * Directory that the component lives in.
-     * @default "./components/ui"
-     */
+    prefix: 'Ui',
     componentDir: './components/ui'
-  }
+  },
+  pinia: {
+    storesDirs: ['./store/**']
+  },
 })
